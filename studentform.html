@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <title>[[${title}]]</title>
+</head>
+<body>
+<div class="text-center bg-dark text-white py-2">
+    <h4>Daffodil International Professional Training Institute</h4>
+</div>
+<div>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container d-flex align-items-center">
+            <h3 class="text-white"><a class="navbar-brand text-decoration-none" href="index.html">Dipti</a></h3>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" align="center">
+                <div class="navbar-nav mr-10">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link" href="/studentnew">Student's Info</a>
+                    <a class="nav-link" href="/teachernew">Teacher's Info</a>
+                    <a class="nav-link" href="#">Gallery</a>
+                    <a class="nav-link" href="#">Notice</a>
+                    <a class="nav-link" href="#">Result</a>
+                    <a class="nav-link" href="#">About us</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="bg-secondary">
+<div class="container bg-secondary">
+    <div class="jumbotron text-center">
+        <h2 class="display-5">Add Student</h2>
+        <hr class="my-2">
+        <a class="btn btn-primary btn-lg" href="/student" role="button">All Student</a>
+    </div>
+    <form th:action="@{/saveStudent}" th:method="post" th:object="${student}" class="b">
+        <form class="">
+            <div>
+                <input type="hidden" class="form-control" th:field="*{id}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Name:</label>
+                <input type="text" class="form-control" th:field="*{name}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email:</label>
+                <input type="email" class="form-control" th:field="*{email}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cell:</label>
+                <input type="text" class="form-control" th:field="*{cell}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Gender:</label>
+                <input type="radio" name="gender" value="Male" th:field="*{gender}">Male
+                <input type="radio" name="gender" value="Female" th:field="*{gender}">Female
+                <input type="radio" name="gender" value="Other" th:field="*{gender}">Other
+            </div>
+            <div class="mb-3">
+                <label class="form-label" th:field="*{subject}">Subject:</label>
+                <select name="subject">
+                    <option th:value="Java" th:field="*{subject}">Java</option>
+                    <option th:value="Python" th:field="*{subject}">python</option>
+                    <option th:value="HTML" th:field="*{subject}">HTML</option>
+                    <option th:value="CSS" th:field="*{subject}">CSS</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        </form>
+    </form>
+</div>
+</div>
+</body>
+</html>
